@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ReimbursementPortal</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<% if current_user %>
+  <p>Welcome, <%= current_user.name %>!</p>
+  <%# <%= image_tag current_user.image_url, alt: "Profile Picture", size: "50x50" %> %>
+  <%= link_to 'Logout', logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login with Google', '/auth/google_oauth2' %>
+<% end %>

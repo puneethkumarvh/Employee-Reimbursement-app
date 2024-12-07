@@ -57,7 +57,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'dotenv-rails'
   gem 'byebug'
-
 end
 
 group :development do
@@ -76,4 +75,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails'
 end
