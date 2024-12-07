@@ -12,12 +12,12 @@ class SessionsController < ApplicationController
         user.assign_attributes(email: email, name: name)
 
         if user.save
-        # Set session if user successfully saved
-        session[:user_id] = user.id
-        redirect_to root_path, notice: "Signed in as #{user.name}"
+            # Set session if user successfully saved
+            session[:user_id] = user.id
+            redirect_to companies_path, notice: "Signed in as #{user.name}"
         else
-        # Handle validation errors
-        redirect_to root_path, alert: "Failed to sign in: #{user.errors.full_messages.join(', ')}"
+            # Handle validation errors
+            redirect_to root_path, alert: "Failed to sign in: #{user.errors.full_messages.join(', ')}"
         end
       end
     

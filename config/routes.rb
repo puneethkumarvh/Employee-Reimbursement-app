@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get '/auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy'
   root 'home#index'
-
+  resources :companies do
+    resources :employees
+  end
 end

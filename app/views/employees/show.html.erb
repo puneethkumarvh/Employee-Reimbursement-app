@@ -1,0 +1,5 @@
+<h1><%= @employee.name %></h1>
+<p><strong>Email:</strong> <%= @employee.email %></p>
+
+<%= link_to 'Edit', edit_company_employee_path(@company, @employee) %> |
+<%= link_to 'Back to Employees', company_employees_path(@company) %>

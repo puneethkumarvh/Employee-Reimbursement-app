@@ -1,0 +1,19 @@
+<div class="employee-form-container">
+  <h1>New Employee</h1>
+  
+  <%= form_with(model: @employee, url: company_employees_path(@company), local: true) do |form| %>
+    <div class="input-box">
+      <%= form.text_field :name, placeholder: "Enter Name", class: 'input-box-field' %>
+    </div>
+
+    <div class="input-box">
+      <%= form.email_field :email, placeholder: "Enter Email", class: 'input-box-field' %>
+    </div>
+
+    <%= form.submit 'Create Employee', class: 'btn-submit' %>
+  <% end %>
+  
+  <div class="btn-container">
+    <%= link_to 'Back', company_employees_path(@company), class: 'btn-back' %>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<h2>Employees</h2>
+
+<%= link_to 'Add New Employee', new_company_employee_path(@company), class: 'btn-add' %>
+
+<div class="employee-list">
+  <% @employees.each do |employee| %>
+    <div class="employee-tile">
+      <h3><%= employee.name %></h3>
+      <p>Email: <%= employee.email %></p>
+      <div class="btn-container">
+        <div class="btn-row">
+            <%= link_to 'Show', company_employee_path(@company, employee), class: 'btn-show' %>
+            <%= link_to 'Edit', edit_company_employee_path(@company, employee), class: 'btn-edit' %>
+        </div>
+        <%= link_to 'Delete', company_employee_path(@company, employee), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
+    </div>
+
+    </div>
+  <% end %>
+</div>

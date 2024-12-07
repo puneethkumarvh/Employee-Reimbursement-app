@@ -1,0 +1,24 @@
+<h2>Companies List</h2>
+
+<% if @companies.present? %>
+  <div class="company-list">
+    <% @companies.each do |company| %>
+      <div class="company-tile">
+        <h3><%= company.name %></h3>
+        <p>Number of Employees: <%= company.employee_count %></p>
+        <p>Total Reimbursement: <%= number_to_currency(company.reimbursement_total, unit: '₹', delimiter: ',', format: "%u %n") %></p>
+
+        <!-- Show Employees Link -->
+        <%= link_to 'Show Employees', company_employees_path(company), class: 'btn-show' %> <br>
+
+        <!-- Edit and Delete Buttons -->
+        <div class="btn-container">
+          <%= link_to 'Edit', edit_company_path(company), class: 'btn-edit' %>
+          <%= link_to 'Delete', company_path(company), method: :delete, data: { confirm: 'Are you sure you want to delete this company?' }, class: 'btn-delete' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No companies available.</p>
+<% end %>

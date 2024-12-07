@@ -1,0 +1,6 @@
+<h1><%= @company.name %></h1>
+<p><strong>Employee Count:</strong> <%= @company.employee_count %></p>
+<p><strong>Reimbursement Total:</strong> <%= @company.reimbursement_total %></p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
