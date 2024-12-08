@@ -18,5 +18,15 @@ module ReimbursementPortal
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+     # Enable CSRF protection (this should already be enabled by default)
+     config.action_controller.allow_forgery_protection = true
+
+     # Configure OmniAuth full host URL for handling OAuth callbacks
+     OmniAuth.config.full_host = Rails.env.production? ? 'https://your-production-url.com' : 'http://localhost:3000'
+ 
+     # Optional: Handle OmniAuth failures gracefully
+     OmniAuth.config.on_failure = Proc.new do |env|
+       OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+     end
   end
 end
