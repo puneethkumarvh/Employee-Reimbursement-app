@@ -41,7 +41,6 @@ class ReimbursementClaimsController < ApplicationController
     end
 
       def destroy
-        byebug
         @reimbursement_claim = @employee.reimbursement_claims.find(params[:id])
       
         # Optionally delete associated receipts if required

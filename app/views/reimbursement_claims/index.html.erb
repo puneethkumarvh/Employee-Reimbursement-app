@@ -20,7 +20,7 @@
         <td>
           <%= link_to 'Show', company_employee_reimbursement_claim_path(@company, @employee, claim) %>
           <%= link_to 'Edit', edit_company_employee_reimbursement_claim_path(@company, @employee, claim) %>
-          <%= link_to 'Delete', company_employee_reimbursement_claim_path(@company, @employee, claim), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= button_to 'Delete', company_employee_reimbursement_claim_path(@company, @employee, claim), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>
