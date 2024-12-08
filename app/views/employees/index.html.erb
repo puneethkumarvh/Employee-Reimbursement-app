@@ -23,8 +23,8 @@
           <%= link_to 'Add Claims', new_company_employee_reimbursement_claim_path(@company, employee), class: 'btn-add-claims' %>
         </div>
         
-        <!-- Delete button -->
-        <%= link_to 'Delete', company_employee_path(@company, employee), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
+        <%= button_to 'Delete', company_employee_path(@company, employee), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
+
       </div>
     </div>
   <% end %>

@@ -19,7 +19,10 @@
         <!-- Edit and Delete Buttons -->
         <div class="btn-container">
           <%= link_to 'Edit', edit_company_path(company), class: 'btn-edit' %>
-          <%= link_to 'Delete', company_path(company), method: :delete, data: { confirm: 'Are you sure you want to delete this company?' }, class: 'btn-delete' %>
+          <%= form_with url: company_path(company), method: :delete, class: 'inline-form', data: { confirm: 'Are you sure you want to delete this company?' } do %>
+               <%= button_tag 'Delete', class: 'btn-delete' %>
+          <% end %>
+
         </div>
       </div>
     <% end %>
