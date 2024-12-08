@@ -120,16 +120,22 @@
   box-sizing: border-box;
 }
 
-/* Show Employees Button */
-.btn-show {
-  background-color: #3498db;
-  color: #fff;
+.btn-showcom {
+  display: inline-block;
+  padding: 12px 20px; /* Increase padding for a larger button */
+  font-size: 16px; /* Increase font size */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 30px; /* Rounded corners */
+  margin-top: 10px; /* Add some spacing above the button */
 }
 
 .btn-show:hover {
-  background-color: #2980b9;
-  border-color: #2980b9;
+  background-color: #0056b3; /* Darker shade on hover */
+  color: white; /* Ensure text remains white */
 }
+
 
 /* Edit Button */
 .btn-edit {
@@ -245,15 +251,6 @@ body {
   width: 100px;
 }
 
-.btn-show {
-  background-color: #3498db;
-  color: #fff;
-}
-
-.btn-show:hover {
-  background-color: #2980b9;
-  border-color: #2980b9;
-}
 
 .btn-edit {
   background-color: #f39c12;
@@ -411,8 +408,10 @@ body {
 /* Button Container for Alignment */
 .btn-container {
   display: flex;
-  justify-content: center;
-  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 /* Submit Button Styling */
 .btn-submit {
@@ -439,6 +438,79 @@ body {
   background-color: #1e7b4f;
   transform: translateY(0);
 }
+
+/* View Claims Button Styling */
+.btn-view-claims {
+  background-color: #8e44ad;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-view-claims:hover {
+  background-color: #732d91;
+  transform: translateY(-3px);
+}
+
+/* Add Claims Button Styling */
+.btn-add-claims {
+  background-color: #16a085;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-add-claims:hover {
+  background-color: #12876f;
+  transform: translateY(-3px);
+}
+
+/* Delete Button (Unchanged) */
+.btn-delete {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%; /* Ensures consistent width */
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+  transform: translateY(-3px);
+}
+
+.create-company-container {
+  text-align: right; 
+  margin-bottom: 20px;
+}
+
+.btn-create {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-create:hover {
+  background-color: #218838;
+  color: white;
+}
+
 
 
 

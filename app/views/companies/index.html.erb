@@ -1,5 +1,10 @@
 <h2>Companies List</h2>
 
+<!-- Create Company Button -->
+<div class="create-company-container">
+  <%= link_to 'Create Company', new_company_path, class: 'btn-create' %>
+</div>
+
 <% if @companies.present? %>
   <div class="company-list">
     <% @companies.each do |company| %>
@@ -9,7 +14,7 @@
         <p>Total Reimbursement: <%= number_to_currency(company.reimbursement_total, unit: '₹', delimiter: ',', format: "%u %n") %></p>
 
         <!-- Show Employees Link -->
-        <%= link_to 'Show Employees', company_employees_path(company), class: 'btn-show' %> <br>
+        <%= link_to 'Show Employees', company_employees_path(company), class: 'btn-showcom' %> <br>
 
         <!-- Edit and Delete Buttons -->
         <div class="btn-container">

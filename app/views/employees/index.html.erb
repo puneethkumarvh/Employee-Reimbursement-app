@@ -1,6 +1,9 @@
 <h2>Employees</h2>
 
-<%= link_to 'Add New Employee', new_company_employee_path(@company), class: 'btn-add' %>
+<!-- Create Company Button -->
+<div class="create-company-container">
+  <%= link_to 'Add New Employee', new_company_employee_path(@company), class: 'btn-create' %>
+</div>
 
 <div class="employee-list">
   <% @employees.each do |employee| %>
@@ -8,13 +11,21 @@
       <h3><%= employee.name %></h3>
       <p>Email: <%= employee.email %></p>
       <div class="btn-container">
+        <!-- First row of buttons: Show and Edit -->
         <div class="btn-row">
-            <%= link_to 'Show', company_employee_path(@company, employee), class: 'btn-show' %>
-            <%= link_to 'Edit', edit_company_employee_path(@company, employee), class: 'btn-edit' %>
+          <%= link_to 'Show', company_employee_path(@company, employee), class: 'btn-showcom' %>
+          <%= link_to 'Edit', edit_company_employee_path(@company, employee), class: 'btn-edit' %>
         </div>
+        
+        <!-- Second row of buttons: View Claims and Add Claims -->
+        <div class="btn-row">
+          <%= link_to 'View Claims', company_employee_reimbursement_claims_path(@company, employee), class: 'btn-view-claims' %>
+          <%= link_to 'Add Claims', new_company_employee_reimbursement_claim_path(@company, employee), class: 'btn-add-claims' %>
+        </div>
+        
+        <!-- Delete button -->
         <%= link_to 'Delete', company_employee_path(@company, employee), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
-    </div>
-
+      </div>
     </div>
   <% end %>
 </div>

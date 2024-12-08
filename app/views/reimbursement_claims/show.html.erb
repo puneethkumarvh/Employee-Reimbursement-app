@@ -1,0 +1,23 @@
+<h1>Reimbursement Claim Details</h1>
+
+<p><strong>Employee ID:</strong> <%= @reimbursement_claim.employee_id %></p>
+<p><strong>Purpose:</strong> <%= @reimbursement_claim.purpose %></p>
+<p><strong>Amount:</strong> <%= number_to_currency(@reimbursement_claim.amount) %></p>
+<p><strong>Date:</strong> <%= @reimbursement_claim.date_of_expenditure %></p>
+
+<% if @reimbursement_claim.receipts.attached? %>
+  <h3>Receipts</h3>
+  <ul>
+    <% @reimbursement_claim.receipts.each do |receipt| %>
+      <li>
+        <%= image_tag url_for(receipt), alt: receipt.filename.to_s, style: "max-width: 100px;" %>
+        <%= receipt.filename.to_s %>
+        <%= link_to 'Download', url_for(receipt), target: "_blank" %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No receipts attached.</p>
+<% end %>
+
+<%= link_to 'Edit', edit_company_employee_reimbursement_claim_path(@company, @employee, @reimbursement_claim) %>

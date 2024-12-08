@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   root 'home#index'
   resources :companies do
-    resources :employees
-  end
+    resources :employees do
+      resources :reimbursement_claims
+    end
+  end  
 end

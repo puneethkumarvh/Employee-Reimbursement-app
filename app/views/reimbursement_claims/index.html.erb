@@ -1,0 +1,29 @@
+<h1>Reimbursement Claims</h1>
+
+<%= link_to 'New Claim', new_company_employee_reimbursement_claim_path(@company, @employee) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Purpose</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reimbursement_claims.each do |claim| %>
+      <tr>
+        <td><%= claim.purpose %></td>
+        <td><%= number_to_currency(claim.amount) %></td>
+        <td><%= claim.date_of_expenditure %></td>
+        <td>
+          <%= link_to 'Show', company_employee_reimbursement_claim_path(@company, @employee, claim) %>
+          <%= link_to 'Edit', edit_company_employee_reimbursement_claim_path(@company, @employee, claim) %>
+          <%= link_to 'Delete', company_employee_reimbursement_claim_path(@company, @employee, claim), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', :back, class: 'btn btn-secondary' %>
