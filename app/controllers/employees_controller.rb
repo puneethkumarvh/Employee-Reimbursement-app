@@ -7,16 +7,17 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employee = Employee.find(params[:id])
+    @employee = @company.employees.find(params[:id]) rescue nil
+    unless @employee 
+      render json: { error: "Employee not found" }, status: :not_found
+    end
   end
 
   def new
-    @company = Company.find(params[:company_id])
     @employee = @company.employees.new
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @employee = @company.employees.new(employee_params)
     if @employee.save
       redirect_to company_employee_path(@company, @employee), notice: 'Employee was successfully created.'
@@ -26,11 +27,11 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    @employee = Employee.find(params[:id])
+    @employee = @company.employees.find(params[:id])
   end
 
   def update
-    @employee = Employee.find(params[:id])
+    @employee = @company.employees.find(params[:id])
     if @employee.update(employee_params)
       redirect_to @employee, notice: 'Employee was successfully updated.'
     else
@@ -39,7 +40,7 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
-    @employee = Employee.find(params[:id])
+    @employee = @company.employees.find(params[:id])
     @employee.destroy
     redirect_to company_employees_path(@employee.company), notice: 'Employee was successfully destroyed.'
   end
@@ -51,6 +52,9 @@ class EmployeesController < ApplicationController
   end
 
   def set_company
-    @company = Company.find(params[:company_id])
+    @company = current_user.companies.find_by(id: params[:company_id])
+    unless @company
+      render json: { error: "Company not found or does not belong to you" }, status: :not_found
+    end
   end
 end

@@ -4,27 +4,24 @@ class ReimbursementClaimsController < ApplicationController
     before_action :set_employee
   
     def index
-      @employee = Employee.find(params[:employee_id])
       @reimbursement_claims = @employee.reimbursement_claims
     end
   
     def new
-      @employee = Employee.find(params[:employee_id])
       @reimbursement_claim = @employee.reimbursement_claims.new
     end
   
     def create
-      @employee = Employee.find(params[:employee_id])
       @reimbursement_claim = @employee.reimbursement_claims.new(reimbursement_claim_params)
       if @reimbursement_claim.save
         redirect_to company_employee_reimbursement_claims_path(@company, @employee), notice: 'Reimbursement Claim was successfully created.'
       else
-        render :new
+        render :new, notice: 'All the fields are mandatory'
       end
     end
   
     def show
-      @reimbursement_claim = ReimbursementClaim.find(params[:id])
+      @reimbursement_claim = @employee.reimbursement_claims.find(params[:id])
     end
 
     def edit
