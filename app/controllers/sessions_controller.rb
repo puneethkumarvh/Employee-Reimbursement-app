@@ -1,11 +1,6 @@
 class SessionsController < ApplicationController
     def google_auth
         user_info = request.env['omniauth.auth']
-        p response.inspect
-        p user_info.inspect
-        Rails.logger.debug("Google OAuth Response: #{response.inspect}")
-        Rails.logger.debug("User Info: #{user_info.inspect}")
-
         # Extract necessary fields from the user info
         google_id = user_info['uid']
         email = user_info['info']['email']
