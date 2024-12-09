@@ -1,3 +1,47 @@
-<h1>Edit Employee</h1>
-<%= render 'form' %>
-<%= link_to 'Back', company_employee_path(@company, @employee) %>
+<div class="edit-employee">
+  <h1>Edit Employee</h1>
+
+  <%= render 'form' %>
+
+  <div class="back-link">
+    <%= link_to 'Back', company_employee_path(@company, @employee), class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<style>
+  .edit-employee {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+
+  .edit-employee h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .back-link {
+    margin-top: 20px;
+    text-align: right;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    background-color: #6c757d;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>

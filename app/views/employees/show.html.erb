@@ -1,5 +1,67 @@
-<h1><%= @employee.name %></h1>
-<p><strong>Email:</strong> <%= @employee.email %></p>
+<div class="employee-details">
+  <h1><%= @employee.name %></h1>
 
-<%= link_to 'Edit', edit_company_employee_path(@company, @employee) %> |
-<%= link_to 'Back to Employees', company_employees_path(@company) %>
+  <div class="details">
+    <p><strong>Email:</strong> <%= @employee.email %></p>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Edit', edit_company_employee_path(@company, @employee), class: "btn btn-primary" %>
+    <%= link_to 'Back to Employees', company_employees_path(@company), class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<style>
+  .employee-details {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+
+  .employee-details h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .details p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  .actions {
+    margin-top: 20px;
+    text-align: right;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    margin-left: 10px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>

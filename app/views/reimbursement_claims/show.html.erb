@@ -1,23 +1,94 @@
-<h1>Reimbursement Claim Details</h1>
+<div class="reimbursement-claim-details">
+  <h1>Reimbursement Claim Details</h1>
 
-<p><strong>Employee ID:</strong> <%= @reimbursement_claim.employee_id %></p>
-<p><strong>Purpose:</strong> <%= @reimbursement_claim.purpose %></p>
-<p><strong>Amount:</strong> <%= number_to_currency(@reimbursement_claim.amount) %></p>
-<p><strong>Date:</strong> <%= @reimbursement_claim.date_of_expenditure %></p>
+  <div class="claim-info">
+    <p><strong>Employee ID:</strong> <%= @reimbursement_claim.employee_id %></p>
+    <p><strong>Purpose:</strong> <%= @reimbursement_claim.purpose %></p>
+    <p><strong>Amount:</strong> <%= number_to_currency(@reimbursement_claim.amount) %></p>
+    <p><strong>Date:</strong> <%= @reimbursement_claim.date_of_expenditure %></p>
+  </div>
 
-<% if @reimbursement_claim.receipts.attached? %>
-  <h3>Receipts</h3>
-  <ul>
-    <% @reimbursement_claim.receipts.each do |receipt| %>
-      <li>
-        <%= image_tag url_for(receipt), alt: receipt.filename.to_s, style: "max-width: 100px;" %>
-        <%= receipt.filename.to_s %>
-        <%= link_to 'Download', url_for(receipt), target: "_blank" %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No receipts attached.</p>
-<% end %>
+  <% if @reimbursement_claim.receipts.attached? %>
+    <div class="receipts-section">
+      <h3>Receipts</h3>
+      <ul class="receipt-list">
+        <% @reimbursement_claim.receipts.each do |receipt| %>
+          <li class="receipt-item">
+            <div class="receipt-preview">
+              <%= image_tag url_for(receipt), 
+                    alt: receipt.filename.to_s, 
+                    style: "max-width: 100px; border: 1px solid #ddd; margin-bottom: 5px;" %>
+            </div>
+            <p><strong>Filename:</strong> <%= receipt.filename.to_s %></p>
+            <%= link_to 'Download', url_for(receipt), target: "_blank", class: "btn btn-download" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <p class="no-receipts">No receipts attached.</p>
+  <% end %>
 
-<%= link_to 'Edit', edit_company_employee_reimbursement_claim_path(@company, @employee, @reimbursement_claim) %>
+  <div class="actions">
+    <%= link_to 'Edit', edit_company_employee_reimbursement_claim_path(@company, @employee, @reimbursement_claim), 
+          class: "btn btn-edit" %>
+  </div>
+</div>
+
+<style>
+  .reimbursement-claim-details {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .claim-info p {
+    margin: 5px 0;
+  }
+
+  .receipts-section {
+    margin-top: 20px;
+  }
+
+  .receipt-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .receipt-item {
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #0056b3;
+  }
+
+  .btn-edit {
+    background: #28a745;
+  }
+
+  .btn-edit:hover {
+    background: #218838;
+  }
+
+  .no-receipts {
+    font-style: italic;
+    color: #555;
+  }
+</style>
