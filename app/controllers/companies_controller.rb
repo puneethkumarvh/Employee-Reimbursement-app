@@ -3,20 +3,19 @@ class CompaniesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @companies = Company.all
-    Rails.logger.debug "Loaded Companies: #{@companies.inspect}" 
+    @companies = current_user.companies
   end
 
   def show
-    @company = Company.find(params[:id])
+    @company = current_user.companies.find_by(id: params[:id])
   end
 
   def new
-    @company = Company.new
+    @company = current_user.companies.new
   end
 
   def create
-    @company = Company.new(company_params)
+    @company = current_user.companies.new(company_params)
     if @company.save
       redirect_to @company, notice: 'Company was successfully created.'
     else
@@ -25,11 +24,11 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
+    @company = current_user.companies.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
+    @company = current_user.companies.find(params[:id])
     if @company.update(company_params)
       redirect_to @company, notice: 'Company was successfully updated.'
     else
@@ -38,7 +37,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:id])
+    @company = current_user.companies.find(params[:id])
     @company.destroy
     redirect_to companies_url, notice: 'Company was successfully destroyed.'
   end
@@ -46,6 +45,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :employee_count, :reimbursement_total)
+    params.require(:company).permit(:name)
   end
 end

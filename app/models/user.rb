@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :companies,dependent: :destroy
   # Validations
 
   # Ensure google_id is present and unique
