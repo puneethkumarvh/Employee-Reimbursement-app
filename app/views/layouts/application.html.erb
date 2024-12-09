@@ -520,9 +520,7 @@ body {
   <header>
     <div class="welcome-message">
       <% if current_user %>
-        <p>Welcome, <%= current_user.name %>!</p>
-      <% else %>
-        <%= link_to 'Login with Google', '/auth/google_oauth2', class: 'login-btn' %>
+       <%= link_to 'Home', companies_path, class: 'home-btn' %> <br>
       <% end %>
     </div>
 
