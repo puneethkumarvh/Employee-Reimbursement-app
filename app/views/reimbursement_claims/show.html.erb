@@ -4,7 +4,7 @@
   <div class="claim-info">
     <p><strong>Employee ID:</strong> <%= @reimbursement_claim.employee_id %></p>
     <p><strong>Purpose:</strong> <%= @reimbursement_claim.purpose %></p>
-    <p><strong>Amount:</strong> <%= number_to_currency(@reimbursement_claim.amount) %></p>
+    <p><strong>Amount:</strong> <%= number_to_currency(@reimbursement_claim.amount, unit: "₹") %></p>
     <p><strong>Date:</strong> <%= @reimbursement_claim.date_of_expenditure %></p>
   </div>
 
