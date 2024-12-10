@@ -1,3 +1,126 @@
-<h1>New Company</h1>
-<%= render 'form' %>
-<%= link_to 'Back', companies_path %>
+<div class="container mx-auto p-8 bg-gradient-to-br from-gray-100 via-white to-gray-200 shadow-lg rounded-xl max-w-3xl">
+  <h1 class="text-4xl font-extrabold text-center text-gray-900 mb-8 tracking-wide">Create a New Company</h1>
+
+  <%= form_with(model: @company, local: true, class: 'space-y-6') do |f| %>
+    <div>
+      <%= f.label :name, "Company Name", class: "block text-lg text-gray-800 font-semibold mb-2" %>
+      <%= f.text_field :name, class: "w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none transition" %>
+    </div>
+
+    <!-- Add inline style for explicit margin -->
+    <div class="text-center" style="margin-top: 1.5rem;">
+      <%= f.submit "Create Company", class: "px-8 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition hover:shadow-xl" %>
+    </div>
+  <% end %>
+
+  <div class="text-center mt-8">
+    <%= link_to 'Back to Companies', companies_path, class: 'inline-block text-blue-500 hover:text-blue-600 font-medium hover:underline' %>
+  </div>
+</div>
+
+<style>
+/* General styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Form container */
+.container {
+  background: linear-gradient(to bottom right, #f9fafb, #ffffff, #f3f4f6);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 40rem;
+  margin: 2rem auto;
+}
+
+/* Heading */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 0.05rem;
+}
+
+/* Form labels */
+label {
+  display: block;
+  font-size: 1rem;
+  color: #4b5563;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Input fields */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #1f2937;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+}
+
+/* Submit button */
+input[type="submit"] {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+input[type="submit"]:hover {
+  background-color: #2563eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Back link */
+a {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1d4ed8;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+  }
+}
+</style>
